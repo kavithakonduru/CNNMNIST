@@ -37,7 +37,7 @@ def larger_model():
 	model.add(Flatten())
 	model.add(Dense(128, activation='relu'))
 	model.add(Dense(50, activation='relu'))
-	model.add(Dense(num_classes, activation='softmax'))
+	model.add(Dense(num_classes, activation='sigmoid'))
 	# Compile model
 	model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 	return model
