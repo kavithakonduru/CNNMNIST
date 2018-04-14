@@ -1,6 +1,13 @@
 
 # Larger CNN for the MNIST Dataset
+import numpy as np
 import numpy
+import numpy
+import matplotlib.pyplot as plt
+import os
+import struct
+import gzip
+import cv2
 from keras.datasets import mnist
 from keras.models import Sequential
 from keras.layers import Dense
@@ -44,11 +51,10 @@ def larger_model():
 # build the model
 model = larger_model()
 # Fit the model
-model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=10, batch_size=200)
+history=model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=10, batch_size=200)
 # Final evaluation of the model
 scores = model.evaluate(X_test, y_test, verbose=0)
 print("Large CNN Error: %.2f%%" % (100-scores[1]*100))
-from keras.models import load_model
 
 model.save('my_model1.h5')
 #del model
@@ -59,4 +65,25 @@ score = model.evaluate(X_test, y_test, verbose=0)
 
 print('[INFO] Test loss:', score[0])
 print('[INFO] Test accuracy:', score[1])
+
+# Fit the model
+#history = model.fit(X, Y, validation_split=0.33, epochs=150, batch_size=10, verbose=0)
+# list all data in history
+print(history.history.keys())
+# summarize history for accuracy
+plt.plot(history.history['acc'])
+plt.plot(history.history['val_acc'])
+plt.title('model accuracy')
+plt.ylabel('accuracy')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+plt.show()
+# summarize history for loss
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.title('model loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+plt.show()
 
