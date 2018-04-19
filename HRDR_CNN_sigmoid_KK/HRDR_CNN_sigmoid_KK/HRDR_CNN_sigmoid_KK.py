@@ -43,7 +43,7 @@ def larger_model():
 	model.add(Flatten())
 	model.add(Dense(128, activation='relu'))
 	model.add(Dense(50, activation='relu'))
-	model.add(Dense(num_classes, activation='softmax'))
+	model.add(Dense(num_classes, activation='sigmoid'))
 	# Compile model
 	model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 	return model
@@ -90,7 +90,7 @@ import matplotlib.pyplot as plt
 
 # grab some test images from the test data
 #X_test, y_test
-test_images = X_test[10:14]
+test_images = X_test[5:9]
 
 # reshape the test images to standard 28x28 format
 test_images = test_images.reshape(test_images.shape[0], 28, 28)
@@ -117,39 +117,3 @@ for i, test_image in enumerate(test_images, start=1):
 
 plt.show()
 
-#recognizing the manually handwritten image or my own image
-#write the image in paint with pencil and size it to the 28X28 pixels. convert the rgb image to gray image
-test = cv2.imread('C:/Users/kavit/Pictures/hrgray2.png',0)
-arr = numpy.array(test).reshape(1,1,28,28)
-arr = numpy.expand_dims(arr, axis=0)
-plt.imshow(test, cmap=plt.get_cmap('gray'))
-plt.show()
-#test = cv2.cvtColor( test, cv2.COLOR_RGB2GRAY )
-test = test.reshape(1, 1, 28, 28)
-test = cv2.bitwise_not(test)
-pred = loaded_model.predict_classes(test)
-print(pred)
-print ('[INFO] I think the digit is - {}'.format(pred[0]))
-
-#read one more handwritten image
-test1 = cv2.imread('C:/Users/kavit/Pictures/hrgray3.png',0)
-arr = numpy.array(test1).reshape(1,1,28,28)
-arr = numpy.expand_dims(arr, axis=0)
-plt.imshow(test1, cmap=plt.get_cmap('gray'))
-plt.show()
-print(pred)
-
-test = cv2.imread('C:/Users/kavit/Pictures/hrgray3.png',0)
-#test = cv2.cvtColor( test, cv2.COLOR_RGB2GRAY )
-test = test.reshape(1, 1, 28, 28)
-test = cv2.bitwise_not(test)
-pred = model.predict_classes(test, verbose=0)
-print(pred)
-print ('[INFO] I think the digit is - {}'.format(pred[0]))
-
-test1 = cv2.imread('C:/Users/kavit/Pictures/hrgray3.png',0)
-arr = numpy.array(test1).reshape(1,1,28,28)
-arr = numpy.expand_dims(arr, axis=0)
-plt.imshow(test1, cmap=plt.get_cmap('gray'))
-plt.show()
-print(pred)
