@@ -1,7 +1,11 @@
+#Kavitha Konduru project assignment
+#This program is for to build and test the nueral network for Handwritten digit classification
+# Code for creating a model which can recognize the digits  and uses the MNIST Dataset 
 
-# Larger CNN for the MNIST Dataset
+# Import the required libraries
 import numpy as np
 import numpy
+import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt
 import os
 import struct
@@ -32,6 +36,8 @@ X_test = X_test / 255
 y_train = np_utils.to_categorical(y_train)
 y_test = np_utils.to_categorical(y_test)
 num_classes = y_test.shape[1]
+
+#Define the model
 def larger_model():
 	# create model
 	model = Sequential()
@@ -47,23 +53,26 @@ def larger_model():
 	# Compile model
 	model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 	return model
+
 # build the model
 model = larger_model()
-# Fit the model
+
+# Fit the model and save it to history
 history=model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=10, batch_size=200)
+
 # Final evaluation of the model
 scores = model.evaluate(X_test, y_test, verbose=0)
 print("Large CNN Error: %.2f%%" % (100-scores[1]*100))
 
-model.save('my_model1.h5')
-#del model
-
-#model= load_model ('my_model1.h5')
-
 score = model.evaluate(X_test, y_test, verbose=0)
-
 print('[INFO] Test loss:', score[0])
 print('[INFO] Test accuracy:', score[1])
+
+#save the model
+model.save('my_model1.h5')
+
+#del model
+#model= load_model ('my_model1.h5')
 
 # Fit the model
 #history = model.fit(X, Y, validation_split=0.33, epochs=150, batch_size=10, verbose=0)
@@ -86,8 +95,8 @@ plt.xlabel('Epoch')
 plt.legend(['train', 'test'], loc='upper left')
 plt.show()
 
-import matplotlib.pyplot as plt
 
+#testing with MNIST test data and making predictions
 # grab some test images from the test data
 #X_test, y_test
 test_images = X_test[10:14]
@@ -117,7 +126,7 @@ for i, test_image in enumerate(test_images, start=1):
 
 plt.show()
 
-#recognizing the manually handwritten image or my own image
+#recognizing the manually handwritten image or my own image and make predictions
 #write the image in paint with pencil and size it to the 28X28 pixels. convert the rgb image to gray image
 test = cv2.imread('C:/Users/kavit/Pictures/hrgray2.png',0)
 arr = numpy.array(test).reshape(1,1,28,28)
@@ -153,3 +162,5 @@ arr = numpy.expand_dims(arr, axis=0)
 plt.imshow(test1, cmap=plt.get_cmap('gray'))
 plt.show()
 print(pred)
+
+#End of the program
