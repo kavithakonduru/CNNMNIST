@@ -126,7 +126,8 @@ plt.show()
 
 #recognizing the manually handwritten image or my own image and make predictions
 #write the image in paint with pencil and size it to the 28X28 pixels. convert the rgb image to gray image
-test = cv2.imread('C:/Users/kavit/Pictures/hrgray2.png',0)
+#test = cv2.imread('C:/Users/kavit/Pictures/hrgray2.png',0)
+test = cv2.imread('hrgray2.png',0)
 arr = numpy.array(test).reshape(1,1,28,28)
 arr = numpy.expand_dims(arr, axis=0)
 plt.imshow(test, cmap=plt.get_cmap('gray'))
@@ -139,14 +140,15 @@ print(pred)
 print ('[INFO] I think the digit is - {}'.format(pred[0]))
 
 #read one more handwritten image
-test1 = cv2.imread('C:/Users/kavit/Pictures/hrgray3.png',0)
+#test1 = cv2.imread('C:/Users/kavit/Pictures/hrgray3.png',0)
+test1 = cv2.imread('hrgray3.png',0)
 arr = numpy.array(test1).reshape(1,1,28,28)
 arr = numpy.expand_dims(arr, axis=0)
 plt.imshow(test1, cmap=plt.get_cmap('gray'))
 plt.show()
 print(pred)
 
-test = cv2.imread('C:/Users/kavit/Pictures/hrgray3.png',0)
+test = cv2.imread('hrgray3.png',0)
 #test = cv2.cvtColor( test, cv2.COLOR_RGB2GRAY )
 test = test.reshape(1, 1, 28, 28)
 test = cv2.bitwise_not(test)
@@ -154,7 +156,8 @@ pred = model.predict_classes(test, verbose=0)
 print(pred)
 print ('[INFO] I think the digit is - {}'.format(pred[0]))
 
-test1 = cv2.imread('C:/Users/kavit/Pictures/hrgray3.png',0)
+#test1 = cv2.imread('C:/Users/kavit/Pictures/hrgray3.png',0)
+test1 = cv2.imread('hrgray3.png',0)
 arr = numpy.array(test1).reshape(1,1,28,28)
 arr = numpy.expand_dims(arr, axis=0)
 plt.imshow(test1, cmap=plt.get_cmap('gray'))

@@ -38,12 +38,12 @@ y_test = np_utils.to_categorical(y_test)
 num_classes = y_test.shape[1]
 # load json and create model
 # C:\Users\kavit\source\repos\largecnn_git\kavipredictors\kavipredictors\model.json
-json_file = open('C:\\Users\\kavit\\source\\repos\\largecnn_git\\kavipredictors\\kavipredictors\\model.json', 'r')
+json_file = open('model.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 loaded_model = model_from_json(loaded_model_json)
 # load weights into new model
-loaded_model.load_weights("C:\\Users\\kavit\\source\\repos\\largecnn_git\\kavipredictors\\kavipredictors\\model.h5")
+loaded_model.load_weights("model.h5")
 print("Loaded model from disk")
  
 # evaluate loaded model on test data
@@ -70,9 +70,6 @@ print('[INFO] Test accuracy:', score[1])
 
 print('[INFO] Test loss:', score[0])
 print('[INFO] Test accuracy:', score[1])
-
-#
-import matplotlib.pyplot as plt
 
 # grab some test images from the test data
 #X_test, y_test
@@ -103,7 +100,7 @@ print("helloooooo")
 import cv2
 
 #test = cv2.imread('C:\\Users\\kavit\\Pictures\\hrgray3.png')
-test = cv2.imread('C:/Users/kavit/Pictures/hrgray2.png',0)
+test = cv2.imread('hrgray2.png',0)
 arr = numpy.array(test).reshape(1,1,28,28)
 arr = numpy.expand_dims(arr, axis=0)
 plt.imshow(test, cmap=plt.get_cmap('gray'))
@@ -115,7 +112,8 @@ pred = loaded_model.predict_classes(test)
 print(pred)
 print ('[INFO] I think the digit is - {}'.format(pred[0]))
 
-test1 = cv2.imread('C:/Users/kavit/Pictures/hrgray2.png',0)
+#test1 = cv2.imread('C:/Users/kavit/Pictures/hrgray2.png',0)
+test1 = cv2.imread('hrgray2.png',0)
 arr = numpy.array(test1).reshape(1,1,28,28)
 arr = numpy.expand_dims(arr, axis=0)
 plt.imshow(test1, cmap=plt.get_cmap('gray'))
@@ -125,7 +123,7 @@ plt.show()
 
 print("Now we will test with the image 3 digit")
 
-test = cv2.imread('C:/Users/kavit/Pictures/hrgray3.png',0)
+test = cv2.imread('hrgray3.png',0)
 arr = numpy.array(test).reshape(1,1,28,28)
 arr = numpy.expand_dims(arr, axis=0)
 plt.imshow(test, cmap=plt.get_cmap('gray'))
@@ -138,11 +136,12 @@ print(pred)
 print ('[INFO] I think the digit is - {}'.format(pred[0]))
 
 #read one more handwritten image
-test1 = cv2.imread('C:/Users/kavit/Pictures/hrgray3.png',0)
+test1 = cv2.imread('hrgray3.png',0)
 arr = numpy.array(test1).reshape(1,1,28,28)
 arr = numpy.expand_dims(arr, axis=0)
 plt.imshow(test1, cmap=plt.get_cmap('gray'))
 plt.show()
 #print(pred)
+
 
 
