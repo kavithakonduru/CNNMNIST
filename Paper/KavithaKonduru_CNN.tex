@@ -49,13 +49,12 @@ The MNIST dataset represents a subset of a NIST database that contains ~ 70,000 
 \paragraph{•}
 \begin{figure}
   \includegraphics[width=\linewidth]{CNNbasicarch.png}
-  \caption{CNN Basic Architecture}
-  \label{fig:CNN Basic}
+  \caption{NN Basic Architecture}
+  \label{fig:NN Basic}
 \end{figure}
 
-Figure \ref{fig:CNN Basic} CNN layers for handwritten digit recognition 
 \paragraph{•}
-Figure 1 depicts a conceptual overview of the CNN and it shows its four core layers including an input layer, two hidden layers, and an output layer. A CNN could consists of many layers that can be used repeatedly to form a Deep Neural Network [1]. We provide definitions for some of the commonly used layers in the CNN [1].  
+Figure 1 depicts a conceptual overview of the NN. CNN consists of four core layers including an input layer, two hidden layers, and an output layer. The difference between Neural network and CNN is the parameter sharing. That is CNN shares parameters where as i NN, the parameters are used only once. Hence performance of CNN is better interms of efficiency and memory power. A CNN could consists of many layers that can be used repeatedly to form a Deep Neural Network [1]. We provide definitions for some of the commonly used layers in the CNN [1].  
 1. Input Layer: This layer carries the information for the raw pixel values that represent an image. 
 2. Convolutional Layer: This layer obtains results from the neuron layer that is connected to the input region. This layer is defined with the specific number of filters to be used. Each filter could be based on a 5x5 window that slides over the input data and gets the pixel with the maximum intensity as the output [10]. 
 3. Rectified Linear Unit(ReLU) Layer: The ReLU layer features an element wise activation function on the image data [10]. A CNN uses back propagation. We apply the ReLU function to preserve the identical values of the pixels and resist from being changed by the back propagation. 
@@ -79,10 +78,9 @@ The CNN facilitates the recognition of the handwritten digits in a form of the t
   \caption{Pooling.}
   \label{fig:Pooling}
 \end{figure}
-Figure \ref{fig:Pooling} Maximum pooling mechanism used by the Convolutional Neural Network
 
 \paragraph{1. Input MNIST Data:}
-  The first phase facilitate the input of the MNIST data in the form of a 784-d array of pixels. Therefore, the data is converted to grayscale images representing 28x28 matrix of pixels. 
+  (see fig: Pooling) The first phase facilitate the input of the MNIST data in the form of a 784-d array of pixels. Therefore, the data is converted to grayscale images representing 28x28 matrix of pixels. 
 \paragraph{2. Building Network Architecture:}
   The second phase defines the models used to build a CNN. The current study uses the Sequential class from Keras to build the network. This network features three sets of layers “CONV =>ReLU=> POOL”. 
 \paragraph{•}
@@ -90,13 +88,13 @@ First Convolution Layer: The first layer receives convolutional filters that go 
 \paragraph{3. Fully Connected Layer: }
 The fully connected layer is used to connect each of the previous layers to the next layers. This layer consists of 500 neurons. Finally, we apply a SoftMax/Sigmoid Classifier that returns a list of probabilities for each of the 10 class labels. The class label with the largest probability is chosen as the final classification from the network and shown in the output. 
 \paragraph{•}
-This output received is used to make the confusion matrix for the model. In this we can add more number of layers but adding more layers might affect the accuracy of the system. Since, it uses multiple layers,  it is called as a Deep Learning system.
+This output received is used to make the confusion matrix for the model. In this we can add more number of layers but adding more layers might affect the accuracy of the system. Since, it uses multiple layers,  it is called as a Deep Learning system.(see fig:Softmax)
 \begin{figure}
   \includegraphics[width=\linewidth]{softmax.png}
   \caption{softmax.}
   \label{fig:softmax}
 \end{figure}
-Figure \ref{fig:softmax} CNN with ReLu and Softmax
+
 
 \section{Results And Analysis }
 \label{gen_inst}
@@ -120,9 +118,9 @@ Figure \ref{fig:softmax} CNN with ReLu and Softmax
 \end{table}
 
 
-\begin{center}
-Model Validation: An extensive set of modeling runs suggest that the CNN model can process a given image of handwritten digit, feeding it to the network, and predict the digit in an accurate manner. Figure 5 shows the sample results that validate the accuracy of the predictions from the developed model. For example, the user inputs the handwritten images of '3' and '2' and the CNN model recognizes the numbers accurately. The author did not observe a single instance where the CNN model failed to prediction a given image of handwritten letter.
-\end{center}
+\paragraph{Model Validation}
+An extensive set of modeling runs suggest that the CNN model can process a given image of handwritten digit, feeding it to the network, and predict the digit in an accurate manner. Figure 5 shows the sample results that validate the accuracy of the predictions from the developed model. For example, the user inputs the handwritten images of '3' and '2' and the CNN model recognizes the numbers accurately. The author did not observe a single instance where the CNN model failed to prediction a given image of handwritten letter.
+
 
 
 \begin{figure}
@@ -131,19 +129,14 @@ Model Validation: An extensive set of modeling runs suggest that the CNN model c
   \label{fig:HRimage2}
 \end{figure}
 
-Figure \ref{fig:HRimage2} CNN prediction on Hand written digital image 2
-
 
 \paragraph{•}
 
-Implementation of CNN using Keras and Tensorflow gives the maximum accuracy when compared with other classification techniques including KNN, RFC, and SVM. While the CNN presents a complex code and higher  processing time when compared with normal Machine Learning algorithms, it offers higher accuracy. Note that these analysis details are for training and testing on the CPU only. Using GPU for this purpose can greatly reduce the training and testing time.
-
-  \begin{figure}
+Implementation of CNN using ReLu and Sigmoid activation functions gives the maximum accuracy when compared with ReLu and Sigmoid activation functions(see Table1). While the CNN presents a complex code and higher  processing time when compared with normal Machine Learning algorithms, it offers higher accuracy. Note that these analysis details are for training and testing on the CPU only. Using GPU for this purpose can greatly reduce the training and testing time.
+\begin{figure}
   \includegraphics[width=\linewidth]{CNNAccuracy.png}  
   \caption{Accuracy.}
-  \label{fig:Accuracy}
-\end{figure}
-Figure \ref{fig:Accuracy} CNN accuracy on MNIST 
+ \end{figure}
 
 \paragraph{Conclusion}
 Digit recognition is an excellent prototype problem for learning about neural networks and it gives a great way to develop more advanced techniques of deep learning. 
@@ -155,11 +148,8 @@ The commercial applications require accurate that the model recongize the digits
 \paragraph{•}
 The proposed study demonstrates that the deep learning concepts can open new ways for digitalization. While this study focused on recognition of the digits,  it can be extended to letters and also for recognizing a person’s handwriting. This can eliminate the need for typing. People can write  in their own handwriting and then convert it in digital form by just clicking their pictures. Digit recognition is an excellent prototype problem for learning about neural networks and it leads new ways for developing advanced deep learning techniques.
 
-\section*{References}
+\section{References:}
 
-\bibliographystyle{unsrt}
-%\bibliography{references_kavi}{}
-%\bibliography{references}
 
 1. Dutt, A. and A. Dutt, Handwritten Digit Recognition Using Deep Learning. International Journal of Advanced Research in Computer Engineering and Technology, 2017. 6(7): p. 990-997.
 
